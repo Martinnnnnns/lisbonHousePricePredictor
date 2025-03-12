@@ -185,26 +185,33 @@ def preprocess_data(df, target_col='Price', test_size=0.2, random_state=42):
     
     return X_train_processed, X_test_processed, y_train, y_test, preprocessor
 
-def save_processed_data(df, filepath=None):
+def save_processed_data(df, filepath=None, decimal_places=3):
     """
-    Save the processed dataframe to CSV.
+    Save the processed dataframe to CSV with limited decimal places.
     
     Args:
         df (pd.DataFrame): Processed dataframe
         filepath (str): Path to save the CSV file
+        decimal_places (int): Number of decimal places to round numeric values
         
     Returns:
         bool: True if saved successfully, False otherwise
     """
     try:
+        df_rounded = df.copy()
+        float_cols = df_rounded.select_dtypes(include=['float64']).columns
+        
+        if not float_cols.empty:
+            df_rounded[float_cols] = df_rounded[float_cols].round(decimal_places)
+        
         if filepath is None:
             script_dir = os.path.dirname(os.path.abspath(__file__))
             filepath = os.path.join(script_dir, 'processed', 'lisbon_houses_processed.csv')
         
         os.makedirs(os.path.dirname(filepath), exist_ok=True)
         
-        df.to_csv(filepath, index=False)
-        print(f"Processed data saved to {filepath}")
+        df_rounded.to_csv(filepath, index=False, float_format=f'%.{decimal_places}f')
+        print(f"Processed data saved to {filepath} with {decimal_places} decimal places")
         return True
     except Exception as e:
         print(f"Error saving processed data: {e}")
