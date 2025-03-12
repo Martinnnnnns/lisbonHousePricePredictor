@@ -2,8 +2,6 @@
 
 A full-stack web application for predicting real estate prices in Lisbon, Portugal. The application uses a machine learning model trained on local housing data to estimate property values based on features like location, size, and amenities.
 
-![Lisbon](https://images.unsplash.com/photo-1569701813229-33284b643e3c?q=80&w=1170)
-
 ## Features
 
 - **Machine Learning-Powered Predictions**: Linear regression model trained on Lisbon housing data

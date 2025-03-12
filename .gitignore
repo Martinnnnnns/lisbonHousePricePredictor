@@ -236,3 +236,12 @@ sketch
 # Ignore all local history of files
 .history
 .ionide
+
+
+### JupyterNotebooks ###
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IPython
+profile_default/
+ipython_config.py
