@@ -3,32 +3,18 @@ Preprocessing script for Lisbon housing data.
 This module handles data cleaning, feature engineering, and preprocessing for the Lisbon house price prediction model.
 """
 import os
+import sys
 import pandas as pd
 import numpy as np
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
-def load_data(filepath='./lisbon-houses.csv'):
-    """
-    Load the raw dataset from CSV.
-    
-    Args:
-        filepath (str): Path to the CSV file
-        
-    Returns:
-        pd.DataFrame: Raw data
-    """
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    filepath = os.path.join(script_dir, 'lisbon-houses.csv')
-    try:
-        df = pd.read_csv(filepath)
-        print(f"Data loaded successfully with {df.shape[0]} rows and {df.shape[1]} columns.")
-        return df
-    except Exception as e:
-        print(f"Error loading data: {e}")
-        return None
+# Use relative imports based on the directory structure
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.data_utils import load_data, save_processed_data, check_missing_values, explore_numeric_features
 
 def clean_data(df):
     """
@@ -58,9 +44,10 @@ def clean_data(df):
         print("Removing redundant Id column")
         cleaned_df = cleaned_df.drop(columns=['Id'])
     
-    print("Missing values before cleaning:")
-    print(cleaned_df.isnull().sum())
+    # Check and report missing values
+    check_missing_values(cleaned_df)
     
+    # Handle missing values
     numeric_cols = cleaned_df.select_dtypes(include=['int64', 'float64']).columns
     for col in numeric_cols:
         cleaned_df[col] = cleaned_df[col].fillna(cleaned_df[col].median())
@@ -135,6 +122,9 @@ def engineer_features(df):
     
     print("Created basic engineered features")
     
+    # Explore the numeric features including newly created ones
+    explore_numeric_features(engineered_df, target_column='Price')
+    
     return engineered_df
 
 def preprocess_data(df, target_col='Price', test_size=0.2, random_state=42):
@@ -150,14 +140,15 @@ def preprocess_data(df, target_col='Price', test_size=0.2, random_state=42):
     Returns:
         tuple: X_train_processed, X_test_processed, y_train, y_test, preprocessor
     """
-    from sklearn.model_selection import train_test_split
-    
     X = df.drop(columns=[target_col, 'Id'] if 'Id' in df.columns else [target_col])
     y = df[target_col]
     
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=test_size, random_state=random_state
     )
+    
+    print(f"Training set: {X_train.shape[0]} samples")
+    print(f"Testing set: {X_test.shape[0]} samples")
     
     numeric_features = X.select_dtypes(include=['int64', 'float64']).columns.tolist()
     categorical_features = X.select_dtypes(include=['object']).columns.tolist()
@@ -180,55 +171,30 @@ def preprocess_data(df, target_col='Price', test_size=0.2, random_state=42):
     )
     
     X_train_processed = preprocessor.fit_transform(X_train)
-    
     X_test_processed = preprocessor.transform(X_test)
     
     return X_train_processed, X_test_processed, y_train, y_test, preprocessor
-
-def save_processed_data(df, filepath=None, decimal_places=3):
-    """
-    Save the processed dataframe to CSV with limited decimal places.
-    
-    Args:
-        df (pd.DataFrame): Processed dataframe
-        filepath (str): Path to save the CSV file
-        decimal_places (int): Number of decimal places to round numeric values
-        
-    Returns:
-        bool: True if saved successfully, False otherwise
-    """
-    try:
-        df_rounded = df.copy()
-        float_cols = df_rounded.select_dtypes(include=['float64']).columns
-        
-        if not float_cols.empty:
-            df_rounded[float_cols] = df_rounded[float_cols].round(decimal_places)
-        
-        if filepath is None:
-            script_dir = os.path.dirname(os.path.abspath(__file__))
-            filepath = os.path.join(script_dir, 'processed', 'lisbon_houses_processed.csv')
-        
-        os.makedirs(os.path.dirname(filepath), exist_ok=True)
-        
-        df_rounded.to_csv(filepath, index=False, float_format=f'%.{decimal_places}f')
-        print(f"Processed data saved to {filepath} with {decimal_places} decimal places")
-        return True
-    except Exception as e:
-        print(f"Error saving processed data: {e}")
-        return False
 
 def main():
     """
     Main function to run the preprocessing pipeline.
     """
-    raw_data = load_data()
+    # Define file paths
+    data_dir = os.path.dirname(os.path.abspath(__file__))
+    input_filepath = os.path.join(data_dir, 'lisbon-houses.csv')
+    output_filepath = os.path.join(data_dir, 'processed', 'lisbon_houses_processed.csv')
+    
+    raw_data = load_data(input_filepath)
     
     if raw_data is not None:
+        # Clean data
         cleaned_data = clean_data(raw_data)
         
+        # Engineer features
         processed_data = engineer_features(cleaned_data)
         
-        save_processed_data(processed_data)
+        # Save processed data
+        save_processed_data(processed_data, output_filepath)
         
         print("Preprocessing completed successfully!")
         
