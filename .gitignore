@@ -248,3 +248,9 @@ ipython_config.py
 
 # Ignore pickle files
 *.pkl
+
+# Ignore saved model files
+backend/models/saved_models/*.pkl
+
+# Ignore generated visualizations
+backend/models/visualizations/*.png
