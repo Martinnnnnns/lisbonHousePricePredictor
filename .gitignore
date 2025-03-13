@@ -245,3 +245,6 @@ sketch
 # IPython
 profile_default/
 ipython_config.py
+
+# Ignore pickle files
+*.pkl
