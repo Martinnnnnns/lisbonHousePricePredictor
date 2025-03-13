@@ -254,3 +254,6 @@ backend/models/saved_models/*.pkl
 
 # Ignore generated visualizations
 backend/models/visualizations/*.png
+backend/models/visualizations/*.jpg
+backend/models/visualizations/*.jpeg
+backend/models/visualizations/*.svg
