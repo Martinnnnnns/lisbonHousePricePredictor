@@ -7,6 +7,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.svm import SVR
+from model_logging import log_model_operation
 
 def load_processed_data(filepath='./backend/data/processed/lisbon_houses_processed.csv'):
     """
@@ -355,25 +356,22 @@ def train_all_models(X_train, y_train, save_dir=None):
     return models
 
 def main():
-    """
-    Args:
-        None
+    @log_model_operation
+    def run_training():
+        df = load_processed_data()
+        if df is None:
+            return
+        
+        model_df = prepare_data_for_modeling(df)
+        X_train, X_test, y_train, y_test = split_data(model_df)
+        
+        save_dir = './backend/models/saved_models/'
+        models = train_all_models(X_train, y_train, save_dir)
+        
+        print("All models trained and saved successfully!")
+        return models, X_train, X_test, y_train, y_test
     
-    Returns:
-        tuple: (models, X_train, X_test, y_train, y_test) - Trained models and datasets
-    """
-    df = load_processed_data()
-    if df is None:
-        return
-    
-    model_df = prepare_data_for_modeling(df)
-    X_train, X_test, y_train, y_test = split_data(model_df)
-    
-    save_dir = './backend/models/saved_models/'
-    models = train_all_models(X_train, y_train, save_dir)
-    
-    print("All models trained and saved successfully!")
-    return models, X_train, X_test, y_train, y_test
+    return run_training()
 
 if __name__ == "__main__":
     main()

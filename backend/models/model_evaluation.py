@@ -7,6 +7,7 @@ import seaborn as sns
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import cross_val_score, KFold
 from model_training import load_processed_data, prepare_data_for_modeling, split_data
+from model_logging import log_model_operation
 
 # Set non-interactive backend to prevent plots from being displayed
 plt.switch_backend('Agg')
@@ -412,48 +413,43 @@ def display_all_visualizations(visuals_path='./backend/models/visuals/'):
         print(f"Error displaying visualizations: {e}")
 
 def main():
-    """
-    Args:
-        None
+    @log_model_operation
+    def run_evaluation():
+        os.makedirs('./backend/models/saved_models', exist_ok=True)
+        os.makedirs('./backend/models/visuals', exist_ok=True)
+        
+        df = load_processed_data('./backend/data/processed/lisbon_houses_processed.csv')
+        if df is None:
+            return
+        
+        model_df = prepare_data_for_modeling(df)
+        X_train, X_test, y_train, y_test = split_data(model_df)
+        
+        models_dir = './backend/models/saved_models/'
+        results_dir = './backend/models/visuals/'
+        
+        # Number of cross-validation folds
+        cv_folds = 5
+        
+        # Evaluate all models with cross-validation
+        evaluation_results = load_models_and_evaluate(
+            X_test, 
+            y_test, 
+            X_train=X_train, 
+            y_train=y_train,
+            models_dir=models_dir, 
+            save_path=results_dir,
+            cv=cv_folds
+        )
+        
+        print("\nModel evaluation with cross-validation completed successfully!")
+        
+        # Uncomment to display visualizations after generation
+        # display_all_visualizations(results_dir)
+        
+        return evaluation_results
     
-    Returns:
-        list: List of evaluation result dictionaries for each model
-    """
-    
-    
-    os.makedirs('./backend/models/saved_models', exist_ok=True)
-    os.makedirs('./backend/models/visuals', exist_ok=True)
-    
-    df = load_processed_data('./backend/data/processed/lisbon_houses_processed.csv')
-    if df is None:
-        return
-    
-    model_df = prepare_data_for_modeling(df)
-    X_train, X_test, y_train, y_test = split_data(model_df)
-    
-    models_dir = './backend/models/saved_models/'
-    results_dir = './backend/models/visuals/'
-    
-    # Number of cross-validation folds
-    cv_folds = 5
-    
-    # Evaluate all models with cross-validation
-    evaluation_results = load_models_and_evaluate(
-        X_test, 
-        y_test, 
-        X_train=X_train, 
-        y_train=y_train,
-        models_dir=models_dir, 
-        save_path=results_dir,
-        cv=cv_folds
-    )
-    
-    print("\nModel evaluation with cross-validation completed successfully!")
-    
-    # Displays all visualizations after generation
-    # display_all_visualizations(results_dir)
-    
-    return evaluation_results
+    return run_evaluation()
 
 if __name__ == "__main__":
     main()

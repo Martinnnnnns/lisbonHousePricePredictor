@@ -2,6 +2,7 @@ import joblib
 import pandas as pd
 import numpy as np
 import os
+from model_logging import log_model_operation
 
 def list_available_models(models_dir='./backend/models/saved_models/'):
     """
@@ -207,32 +208,31 @@ def predict_batch(model_name, batch_data, models_dir='./backend/models/saved_mod
     return predictions
 
 def main():
-    """
-    Args:
-        None
+    @log_model_operation
+    def run_prediction():
+        models_dir = './backend/models/saved_models/'
+        
+        # List available models
+        print("Available models in the system:")
+        list_available_models(models_dir)
+        
+        sample_input = {
+            'Condition': 'New',
+            'PropertyType': 'Homes',
+            'PropertySubType': 'Apartment',
+            'Bedrooms': 3,
+            'Bathrooms': 2,
+            'AreaNet': 120,
+            'AreaGross': 240,
+            'Parking': 1,
+            'Parish': 'Alvalade'
+        }
+        
+        print("\nPredicting with all available models:")
+        predictions = predict_with_all_models(sample_input, models_dir)
+        return predictions
     
-    Returns:
-        None: Demonstrates model prediction functionality with a sample input
-    """
-    models_dir = './backend/models/saved_models/'
-    
-    print("Available models in the system:")
-    list_available_models(models_dir)
-    
-    sample_input = {
-        'Condition': 'New',
-        'PropertyType': 'Homes',
-        'PropertySubType': 'Apartment',
-        'Bedrooms': 3,
-        'Bathrooms': 2,
-        'AreaNet': 120,
-        'AreaGross': 240,
-        'Parking': 1,
-        'Parish': 'Alvalade'
-    }
-    
-    print("\nPredicting with all available models:")
-    predictions = predict_with_all_models(sample_input, models_dir)
+    return run_prediction()
 
 if __name__ == "__main__":
     main()
