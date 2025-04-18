@@ -63,18 +63,10 @@ export default function PurposePage() {
           </p>
           <ul className="list-disc ml-6 space-y-2 text-gray-300">
             <li>Incorporating more data sources and features</li>
-            <li>Implementing time-series analysis to track market trends</li>
             <li>Adding neighborhood-specific insights and visualizations</li>
             <li>Developing more advanced prediction models</li>
             <li>Creating an API for third-party applications</li>
           </ul>
-        </section>
-        
-        <section>
-          <h2 className="text-2xl font-bold mb-4 text-white">Acknowledgments</h2>
-          <p className="text-gray-300">
-            This project was made possible through open-source tools and libraries like scikit-learn, pandas, Flask, and Next.js. I'm also grateful to the real estate professionals and data scientists who provided valuable insights during the development process.
-          </p>
         </section>
       </div>
     </div>
