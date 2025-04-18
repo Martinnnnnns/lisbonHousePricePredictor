@@ -25,27 +25,28 @@ export default function AboutPage() {
             
             {/* Bio Information Section */}
             <div className="md:w-2/3 p-8 bg-gray-900">
-              <h2 className="text-2xl font-bold mb-6 text-white">Your Name</h2>
+              <h2 className="text-2xl font-bold mb-6 text-white">Bernardo Guterres</h2>
               
               <div className="space-y-6 text-gray-300">
                 <p className="leading-relaxed">
-                  Per ardua ad astra, hoc propositum ortum est ex desiderio explorandi et innovandi.
-                  Per ardua ad astra, hoc propositum ortum est ex desiderio explorandi et innovandi.
-                  Per ardua ad astra, hoc propositum ortum est ex desiderio explorandi et innovandi.
+                  I'm currently pursuing a Bachelor's degree in Computer Science at King’s College London. 
+                  My academic journey is driven by a deep interest in Artificial Intelligence and Machine Learning, 
+                  where I explore how intelligent systems can solve real-world problems and create impactful solutions.
                 </p>
-                
+
                 <p className="leading-relaxed">
-                  Per ardua ad astra, hoc propositum ortum est ex desiderio explorandi et innovandi.
-                  Per ardua ad astra, hoc propositum ortum est ex desiderio explorandi et innovandi.
-                  Per ardua ad astra, hoc propositum ortum est ex desiderio explorandi et innovandi.
+                  I have hands-on experience working with languages like Python, Java, and SQL, and enjoy building projects 
+                  that combine technical skills with creativity. I'm particularly drawn to Data Science, from extracting insights 
+                  from data to training predictive models, and I’m eager to pursue a professional career in AI and Data Science.
                 </p>
-                
+
                 <p className="leading-relaxed">
-                  Per ardua ad astra, hoc propositum ortum est ex desiderio explorandi et innovandi.
-                  Per ardua ad astra, hoc propositum ortum est ex desiderio explorandi et innovandi.
-                  Per ardua ad astra, hoc propositum ortum est ex desiderio explorandi et innovandi.
+                  Outside of the world of code, I’m an avid athlete with a passion for rock climbing and tennis. 
+                  Balancing sports and studies keeps me focused, curious, and always pushing forward. 
+                  I'm excited about contributing to the future of AI while continuing to grow as both a developer and a learner.
                 </p>
               </div>
+
             </div>
           </div>
         </div>
