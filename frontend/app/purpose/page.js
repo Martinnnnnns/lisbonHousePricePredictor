@@ -13,6 +13,9 @@ export default function PurposePage() {
           <p className="text-gray-300">
             This project aims to bridge that gap by providing data-driven price predictions based on key property features and location data.
           </p>
+          <a href="https://github.com/yourusername/customer-segments" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
+              Github Repository
+            </a>
         </section>
         
         <section>

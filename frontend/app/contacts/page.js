@@ -56,10 +56,10 @@ export default function ContactsPage() {
               <FaGithub size={24} />
             </div>
             <div className="ml-4">
-              <h3 className="text-lg font-medium text-white">GitHub Repository</h3>
+              <h3 className="text-lg font-medium text-white">GitHub Profile</h3>
               <p className="text-blue-400">
-                <a href="https://github.com/Martinnnnnns/Lisbon_House_Price_Predictor" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300">
-                github.com/Martinnnnnns/Lisbon_House_Price_Predictor
+                <a href="https://github.com/Martinnnnnns" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300">
+                  github.com/Martinnnnnns
                 </a>
               </p>
             </div>
