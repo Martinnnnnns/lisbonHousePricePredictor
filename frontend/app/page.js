@@ -9,16 +9,11 @@ export default function Home() {
       <section className="text-center py-12 space-y-6">
         <h1 className="text-4xl font-bold text-blue-400">Lisbon House Price Predictor</h1>
         <p className="text-xl max-w-3xl mx-auto text-gray-300">
-          Predict house prices in Lisbon using machine learning models trained on local real estate data.
+          Welcome to my experimental data science project! Using a Kaggle dataset of Lisbon real estate listings, I&apos;ve explored various machine learning algorithms to predict property prices. This project combines my passion for data science with frontend development, creating an interactive platform to showcase the performance of different models. I hope you find the results interesting and enjoy exploring how data-driven insights can help understand the Lisbon property market.
         </p>
-        <div>
-          <Link 
-            href="/models" 
-            className="inline-block btn-primary hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium"
-          >
-            Try Our Models
-          </Link>
-        </div>
+        <p className="text-lg max-w-2xl mx-auto text-gray-400 mt-8">
+          Below, you&apos;ll find several machine learning models I&apos;ve trained and evaluated, each demonstrating different approaches to price prediction. Feel free to explore the metrics, visualizations, and performance comparisons for each model.
+        </p>
       </section>
       
       <section className="grid md:grid-cols-2 gap-8">
