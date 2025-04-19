@@ -8,7 +8,7 @@ export default function PurposePage() {
         <section>
           <h2 className="text-2xl font-bold mb-4 text-white">The Vision</h2>
           <p className="mb-3 text-gray-300">
-            The Lisbon House Price Predictor was created to provide transparency and insights into Lisbon's real estate market through data science and machine learning. The Portuguese capital has seen significant changes in housing prices over recent years, making it challenging for buyers, sellers, and investors to accurately gauge property values.
+            The Lisbon House Price Predictor was created to provide transparency and insights into Lisbon&apos;s real estate market through data science and machine learning. The Portuguese capital has seen significant changes in housing prices over recent years, making it challenging for buyers, sellers, and investors to accurately gauge property values.
           </p>
           <p className="text-gray-300">
             This project aims to bridge that gap by providing data-driven price predictions based on key property features and location data.

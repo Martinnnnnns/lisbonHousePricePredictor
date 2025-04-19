@@ -169,7 +169,7 @@ export default function Model6VisualsPage() {
           </p>
           <div className="mt-4 p-4 bg-gray-800 rounded-lg border border-gray-700">
             <p className="text-gray-300 text-sm">
-              <strong className="text-blue-400">Key Advantage:</strong> While Random Forest achieves better absolute performance, Lasso provides much better interpretability with its sparse coefficient structure. The Lasso model's ability to perform feature selection automatically makes it particularly valuable for understanding which features truly drive housing prices in Lisbon, while maintaining strong predictive performance. With a cross-validated R² score of 0.8945 ± 0.0624, it demonstrates robust performance across different data subsets.
+              <strong className="text-blue-400">Key Advantage:</strong> While Random Forest achieves better absolute performance, Lasso provides much better interpretability with its sparse coefficient structure. The Lasso model&apos;s ability to perform feature selection automatically makes it particularly valuable for understanding which features truly drive housing prices in Lisbon, while maintaining strong predictive performance. With a cross-validated R² score of 0.8945 ± 0.0624, it demonstrates robust performance across different data subsets.
             </p>
           </div>
         </div>

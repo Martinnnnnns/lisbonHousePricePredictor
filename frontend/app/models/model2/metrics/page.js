@@ -50,7 +50,7 @@ export default function Model2MetricsPage() {
           <h2 className="text-2xl font-bold mb-6 text-blue-400">Evaluation Metrics</h2>
           
           <p className="text-gray-300 mb-6">
-            The following metrics have been used to evaluate our Decision Tree model's performance in predicting Lisbon house prices:
+            The following metrics have been used to evaluate our Decision Tree model&apos;s performance in predicting Lisbon house prices:
           </p>
           
           <div className="space-y-6">
@@ -198,7 +198,7 @@ export default function Model2MetricsPage() {
           
           <div className="mt-6 p-4 bg-gray-800 rounded-lg border border-gray-700">
             <p className="text-gray-300 text-sm">
-              <strong className="text-blue-400">Note:</strong> The high standard deviation in cross-validated metrics (R² = 0.8341 ± 0.1276) suggests that the Decision Tree model's performance varies significantly depending on the specific data it encounters. This indicates potential issues with model stability.
+              <strong className="text-blue-400">Note:</strong> The high standard deviation in cross-validated metrics (R² = 0.8341 ± 0.1276) suggests that the Decision Tree model&apos;s performance varies significantly depending on the specific data it encounters. This indicates potential issues with model stability.
             </p>
           </div>
         </div>

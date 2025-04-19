@@ -29,21 +29,21 @@ export default function AboutPage() {
               
               <div className="space-y-6 text-gray-300">
                 <p className="leading-relaxed">
-                  I'm currently pursuing a Bachelor's degree in Computer Science at King’s College London. 
+                  I&apos;m currently pursuing a Bachelor&apos;s degree in Computer Science at King’s College London. 
                   My academic journey is driven by a deep interest in Artificial Intelligence and Machine Learning, 
                   where I explore how intelligent systems can solve real-world problems and create impactful solutions.
                 </p>
 
                 <p className="leading-relaxed">
                   I have hands-on experience working with languages like Python, Java, and SQL, and enjoy building projects 
-                  that combine technical skills with creativity. I'm particularly drawn to Data Science, from extracting insights 
+                  that combine technical skills with creativity. I&apos;m particularly drawn to Data Science, from extracting insights 
                   from data to training predictive models, and I’m eager to pursue a professional career in AI and Data Science.
                 </p>
 
                 <p className="leading-relaxed">
                   Outside of the world of code, I’m an avid athlete with a passion for rock climbing and tennis. 
                   Balancing sports and studies keeps me focused, curious, and always pushing forward. 
-                  I'm excited about contributing to the future of AI while continuing to grow as both a developer and a learner.
+                  I&apos;m excited about contributing to the future of AI while continuing to grow as both a developer and a learner.
                 </p>
               </div>
 
@@ -102,7 +102,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-white">BSc in Computer Science</h3>
-                <p className="text-sm text-gray-400">King's College London, 2023-2026</p>
+                <p className="text-sm text-gray-400">King&apos;s College London, 2023-2026</p>
               </div>
               <div>
                 <h3 className="font-semibold text-white">Java Script Coding</h3>

@@ -54,7 +54,7 @@ export default function Model1MetricsPage() {
           <h2 className="text-2xl font-bold mb-6 text-blue-400">Evaluation Metrics</h2>
           
           <p className="text-gray-300 mb-6">
-            The following metrics have been used to evaluate our Linear Regression model's performance in predicting Lisbon house prices:
+            The following metrics have been used to evaluate our Linear Regression model&apos;s performance in predicting Lisbon house prices:
           </p>
           
           <div className="space-y-6">
@@ -192,7 +192,7 @@ export default function Model1MetricsPage() {
           
           <div className="mt-6 p-4 bg-gray-800 rounded-lg border border-gray-700">
             <p className="text-gray-300 text-sm">
-              <strong className="text-blue-400">Note:</strong> The difference between cross-validation R² (0.9057) and test set R² (0.8513) suggests that while the model learns patterns well during training, there's a slight drop in performance on completely new data.
+              <strong className="text-blue-400">Note:</strong> The difference between cross-validation R² (0.9057) and test set R² (0.8513) suggests that while the model learns patterns well during training, there&apos;s a slight drop in performance on completely new data.
             </p>
           </div>
         </div>

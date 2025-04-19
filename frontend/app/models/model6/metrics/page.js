@@ -54,7 +54,7 @@ export default function Model6MetricsPage() {
           <h2 className="text-2xl font-bold mb-6 text-blue-400">Evaluation Metrics</h2>
           
           <p className="text-gray-300 mb-6">
-            The following metrics have been used to evaluate our Lasso Regression model's performance in predicting Lisbon house prices:
+            The following metrics have been used to evaluate our Lasso Regression model&apos;s performance in predicting Lisbon house prices:
           </p>
           
           <div className="space-y-6">
@@ -202,7 +202,7 @@ export default function Model6MetricsPage() {
           
           <div className="mt-6 p-4 bg-gray-800 rounded-lg border border-gray-700">
             <p className="text-gray-300 text-sm">
-              <strong className="text-blue-400">Note:</strong> The difference between cross-validation R² (0.8945) and test set R² (0.8662) suggests good generalization, with only a moderate drop in performance on completely new data. The Lasso model's feature selection capabilities help prevent overfitting.
+              <strong className="text-blue-400">Note:</strong> The difference between cross-validation R² (0.8945) and test set R² (0.8662) suggests good generalization, with only a moderate drop in performance on completely new data. The Lasso model&apos;s feature selection capabilities help prevent overfitting.
             </p>
           </div>
         </div>

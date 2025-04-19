@@ -54,7 +54,7 @@ export default function Model3MetricsPage() {
           <h2 className="text-2xl font-bold mb-6 text-blue-400">Evaluation Metrics</h2>
           
           <p className="text-gray-300 mb-6">
-            The following metrics have been used to evaluate our Random Forest model's performance in predicting Lisbon house prices:
+            The following metrics have been used to evaluate our Random Forest model&apos;s performance in predicting Lisbon house prices:
           </p>
           
           <div className="space-y-6">

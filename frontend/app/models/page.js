@@ -58,7 +58,7 @@ export default function ModelsPage() {
           </h2>
           
           <p className="text-gray-300 mb-4">
-            Our Lisbon House Price Predictor utilizes multiple machine learning models to provide accurate price predictions based on different property characteristics. Each model has been trained on comprehensive datasets of Lisbon's real estate market.
+            Our Lisbon House Price Predictor utilizes multiple machine learning models to provide accurate price predictions based on different property characteristics. Each model has been trained on comprehensive datasets of Lisbon&apos;s real estate market.
           </p>
           
           <p className="text-gray-300 mb-6">

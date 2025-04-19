@@ -120,7 +120,7 @@ export default function Model4Page() {
           
           <div className="space-y-4 text-gray-300">
             <p>
-              Support Vector Regression (SVR) works by finding the hyperplane that best fits the data in a high-dimensional space, while maintaining a margin of tolerance. Our implementation uses a linear kernel with specific hyperparameters (C=1.0, epsilon=0.01, gamma='scale') optimized through grid search.
+              Support Vector Regression (SVR) works by finding the hyperplane that best fits the data in a high-dimensional space, while maintaining a margin of tolerance. Our implementation uses a linear kernel with specific hyperparameters (C=1.0, epsilon=0.01, gamma=&apos;scale&apos;) optimized through grid search.
             </p>
             
             <p>

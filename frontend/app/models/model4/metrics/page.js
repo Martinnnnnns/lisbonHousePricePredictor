@@ -54,7 +54,7 @@ export default function Model4MetricsPage() {
           <h2 className="text-2xl font-bold mb-6 text-blue-400">Evaluation Metrics</h2>
           
           <p className="text-gray-300 mb-6">
-            The following metrics have been used to evaluate our Support Vector Regression model's performance in predicting Lisbon house prices:
+            The following metrics have been used to evaluate our Support Vector Regression model&apos;s performance in predicting Lisbon house prices:
           </p>
           
           <div className="space-y-6">
@@ -165,7 +165,7 @@ export default function Model4MetricsPage() {
               </div>
               <div>
                 <h4 className="text-white font-medium">Hyperparameter Tuning</h4>
-                <p className="text-gray-300">Extensive grid search with 24 parameter combinations to find optimal hyperparameters: C=1.0, epsilon=0.01, gamma='scale', kernel='linear'</p>
+                <p className="text-gray-300">Extensive grid search with 24 parameter combinations to find optimal hyperparameters: C=1.0, epsilon=0.01, gamma=&apos;scale&apos;, kernel=&apos;linear&apos;</p>
               </div>
             </div>
             
