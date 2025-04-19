@@ -1,6 +1,8 @@
 // frontend/app/page.js
 import Link from 'next/link';
-
+import Image from 'next/image';
+import lisbonhouses from '../images/lisbonhouses.jpg';
+import linearpredictions from '../images/visuals/lp.png';
 export default function Home() {
   return (
     <div className="space-y-12 py-12 px-6">
@@ -22,6 +24,16 @@ export default function Home() {
       <section className="grid md:grid-cols-2 gap-8">
         <div className="bg-gray-900 p-6 rounded-xl border border-gray-800 shadow-xl">
           <h2 className="text-2xl font-bold mb-4 text-white">About This Project</h2>
+          <div className="w-full aspect-[5/3] relative bg-gray-800 rounded-lg overflow-hidden mb-4">
+            <Image 
+              src={lisbonhouses} 
+              alt="About Project Visualization"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          
           <p className="mb-4 text-gray-300">
             This project uses machine learning models to predict house prices in Lisbon, Portugal.
             The models are trained on real estate data from the Lisbon area.
@@ -33,8 +45,18 @@ export default function Home() {
         
         <div className="bg-gray-900 p-6 rounded-xl border border-gray-800 shadow-xl">
           <h2 className="text-2xl font-bold mb-4 text-white">Our Models</h2>
+          <div className="w-full aspect-[5/3] relative bg-gray-800 rounded-lg overflow-hidden mb-4">
+            <Image 
+              src={linearpredictions} 
+              alt="Models Visualization"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          
           <p className="mb-4 text-gray-300">
-            We have developed several models using different machine learning algorithms.
+            I have developed several models using different machine learning algorithms.
             Each model has its strengths and performs differently based on various factors.
           </p>
           <Link href="/models" className="text-blue-400 hover:text-blue-300">
