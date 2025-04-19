@@ -1,9 +1,46 @@
+'use client';
 // frontend/app/models/model1/visuals/page.js
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
+import linearresiduals from '../../../../images/visuals/lr.png';
+import lineardistresiduals from '../../../../images/visuals/ldr.png';
+import linearpredictions from '../../../../images/visuals/lp.png';
+import model_comparison from '../../../../images/visuals/model_comparison.png';
 import { FaChartBar, FaChartLine, FaChartPie, FaArrowLeft } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 
 export default function Model1VisualsPage() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const openLightbox = (image, title) => {
+    setSelectedImage({ src: image, title });
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
+  };
+
+  // Handle escape key to close lightbox
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    };
+
+    if (selectedImage) {
+      document.addEventListener('keydown', handleEscape);
+      // Prevent scrolling of the background content
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedImage]);
+
   return (
     <div className="flex min-h-screen bg-black">
       {/* Left Sidebar - Only Model Detail Navigation */}
@@ -51,17 +88,20 @@ export default function Model1VisualsPage() {
       <div className="flex-1 py-12 px-8">
         <h1 className="text-4xl font-bold mb-3 text-blue-400">Visualizations</h1>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
           <div className="bg-gray-900 p-6 rounded-xl border border-gray-800 shadow-xl">
             <h2 className="text-xl font-bold mb-4 text-blue-400">Actual vs. Predicted Prices</h2>
-            <div className="aspect-square relative bg-gray-800 rounded-lg overflow-hidden">
-              <div className="flex items-center justify-center h-full">
-                <div className="text-center p-6">
-                  <p className="text-gray-400 mb-4">[Scatter Plot Visualization]</p>
-                  <p className="text-gray-300 text-sm">Linear Model (R² = 0.8513)</p>
-                  <p className="text-gray-400 text-xs mt-2">RMSE: €91,468.46</p>
-                </div>
-              </div>
+            <div 
+              className="w-full aspect-[5/3] relative bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => openLightbox(linearpredictions, "Actual vs. Predicted Prices")}
+            >
+              <Image 
+                src={linearpredictions} 
+                alt="Linear Predictions"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
             <p className="mt-4 text-sm text-gray-300">
               This scatter plot shows the relationship between actual house prices and predicted prices. In our evaluation, the Linear model achieved an R² score of 0.8513, indicating it explains about 85% of the variance in housing prices.
@@ -70,14 +110,17 @@ export default function Model1VisualsPage() {
           
           <div className="bg-gray-900 p-6 rounded-xl border border-gray-800 shadow-xl">
             <h2 className="text-xl font-bold mb-4 text-blue-400">Error Distribution</h2>
-            <div className="aspect-square relative bg-gray-800 rounded-lg overflow-hidden">
-              <div className="flex items-center justify-center h-full">
-                <div className="text-center p-6">
-                  <p className="text-gray-400 mb-4">[Histogram Visualization]</p>
-                  <p className="text-gray-300 text-sm">Error Distribution</p>
-                  <p className="text-gray-400 text-xs mt-2">Mean Error: €20,153.91</p>
-                </div>
-              </div>
+            <div 
+              className="w-full aspect-[5/3] relative bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => openLightbox(lineardistresiduals, "Error Distribution")}
+            >
+              <Image 
+                src={lineardistresiduals} 
+                alt="Linear Distribution of Residuals"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
             <p className="mt-4 text-sm text-gray-300">
               This histogram shows the distribution of prediction errors. The model has a Mean Absolute Percentage Error (MAPE) of 20.15%, which is higher than some of our other models, indicating areas for potential improvement.
@@ -85,33 +128,20 @@ export default function Model1VisualsPage() {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-          <div className="bg-gray-900 p-6 rounded-xl border border-gray-800 shadow-xl">
-            <h2 className="text-xl font-bold mb-4 text-blue-400">Cross-Validation Performance</h2>
-            <div className="aspect-square relative bg-gray-800 rounded-lg overflow-hidden">
-              <div className="flex items-center justify-center h-full">
-                <div className="text-center p-6">
-                  <p className="text-gray-400 mb-4">[Box Plot Visualization]</p>
-                  <p className="text-gray-300 text-sm">5-Fold Cross-Validation</p>
-                  <p className="text-gray-400 text-xs mt-2">CV R² Score: 0.9057 ± 0.0538</p>
-                </div>
-              </div>
-            </div>
-            <p className="mt-4 text-sm text-gray-300">
-              This visualization shows the performance across 5 cross-validation folds. The Linear model shows good consistency in performance, with a cross-validated R² score of 0.9057 ± 0.0538, indicating reliable predictive power.
-            </p>
-          </div>
-          
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
           <div className="bg-gray-900 p-6 rounded-xl border border-gray-800 shadow-xl">
             <h2 className="text-xl font-bold mb-4 text-blue-400">Residual Analysis</h2>
-            <div className="aspect-square relative bg-gray-800 rounded-lg overflow-hidden">
-              <div className="flex items-center justify-center h-full">
-                <div className="text-center p-6">
-                  <p className="text-gray-400 mb-4">[Residual Plot Visualization]</p>
-                  <p className="text-gray-300 text-sm">Residuals vs. Predicted Values</p>
-                  <p className="text-gray-400 text-xs mt-2">MAE: €69,956.68</p>
-                </div>
-              </div>
+            <div 
+              className="w-full aspect-[5/3] relative bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => openLightbox(linearresiduals, "Residual Analysis")}
+            >
+              <Image 
+                src={linearresiduals} 
+                alt="Linear Residuals"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
             <p className="mt-4 text-sm text-gray-300">
               This plot shows residuals (differences between actual and predicted values) against predicted values. The linear model has a Mean Absolute Error of €69,956.68, which ranks 5th among our 6 models.
@@ -121,24 +151,58 @@ export default function Model1VisualsPage() {
         
         <div className="bg-gray-900 p-6 rounded-xl border border-gray-800 shadow-xl">
           <h2 className="text-xl font-bold mb-4 text-blue-400">Model Comparison</h2>
-          <div className="aspect-video relative bg-gray-800 rounded-lg overflow-hidden">
-            <div className="flex items-center justify-center h-full">
-              <div className="text-center p-6">
-                <p className="text-gray-400 mb-4">[Bar Chart Visualization]</p>
-                <p className="text-gray-300 text-sm">Performance Metrics Across All Models</p>
-                <p className="text-gray-400 text-xs mt-2">Linear Model Average Rank: 4.75 of 6</p>
-              </div>
-            </div>
+          <div 
+            className="w-full aspect-[7/5] relative bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+            onClick={() => openLightbox(model_comparison, "Model Comparison")}
+          >
+            <Image 
+              src={model_comparison} 
+              alt="Model Comparison"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
           <p className="mt-4 text-sm text-gray-300">
             This comparison shows how the Linear model performs relative to other models in our evaluation. The Linear model ranks 4th overall with an average rank of 4.75. While it provides good interpretability, other models like Random Forest (rank 1.00) and Lasso (rank 2.50) offer better prediction accuracy.
           </p>
           <div className="mt-4 p-4 bg-gray-800 rounded-lg border border-gray-700">
             <p className="text-gray-300 text-sm">
-              <strong className="text-blue-400">Important Note:</strong> In our most recent prediction run, the Linear model predicted a value of €101,684,946.24, which was significantly higher than other models and excluded from the ensemble average. This outlier prediction suggests the Linear model may be more susceptible to extreme values in certain feature combinations.
+              <strong className="text-blue-400">Important Note:</strong> In the most recent prediction run, the Linear model predicted a value of €101,684,946.24, which was significantly higher than other models and excluded from the ensemble average. This outlier prediction suggests the Linear model may be more susceptible to extreme values in certain feature combinations.
             </p>
           </div>
         </div>
+
+        {/* Lightbox Modal */}
+        {selectedImage && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
+            onClick={closeLightbox}
+          >
+            <div 
+              className="relative w-[90vw] h-[90vh] bg-gray-900 rounded-lg p-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                onClick={closeLightbox}
+                className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
+                aria-label="Close lightbox"
+              >
+                <FaTimes size={24} />
+              </button>
+              <h3 className="text-xl font-bold text-blue-400 mb-4">{selectedImage.title}</h3>
+              <div className="relative w-full h-[calc(100%-3rem)]">
+                <Image 
+                  src={selectedImage.src}
+                  alt={selectedImage.title}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

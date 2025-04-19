@@ -6,7 +6,7 @@ export default function ModelsPage() {
   return (
     <div className="flex min-h-screen bg-black p-0 m-0 w-full">
       {/* Left Sidebar - Model Navigation */}
-      <div className="bg-gray-900 border-r border-gray-800 p-6" style={{ width: '250px', minWidth: '250px' }}>
+      <div className="bg-gray-900 border-r border-gray-800 p-6" style={{ width: '257px', minWidth: '250px' }}>
         <h2 className="text-xl font-bold text-blue-400 mb-6">Models</h2>
         <nav className="space-y-2">
           <Link 
