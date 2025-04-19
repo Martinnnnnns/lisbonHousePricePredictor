@@ -66,7 +66,7 @@ export default function OtherWorkPage() {
               <span className="px-3 py-1 bg-blue-900 rounded-full text-blue-300 text-sm">Node.js</span>
               <span className="px-3 py-1 bg-blue-900 rounded-full text-blue-300 text-sm">Full Stack</span>
             </div>
-            <a href="https://github.com/parc1fal/TeamPlatypus" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
+            <a href="https://kclsu.click/" className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center">
               View Project
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
