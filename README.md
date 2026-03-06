@@ -98,8 +98,3 @@ Key features that influence property prices in Lisbon:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgements
-
-- Dataset sourced from Lisbon real estate listings
-- Built with Flask and React
-- Machine learning model powered by scikit-learn
